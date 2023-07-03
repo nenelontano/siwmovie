@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head> 
+    <title>New Movie</title> 
+    <link rel="stylesheet" href="/css/stile.css" />
+</head> 
+
+
+ <body> 
+	 <header id="header-nav">
+		<div class="login-out">
+		<div th:if="${#request.userPrincipal}">
+			<span th:text="${#request.userPrincipal.principal.username}" style="color:white"></span>
+			<a href="/logout">LOGOUT</a>
+		</div>
+		<div th:unless="${#request.userPrincipal}">
+			<a href="/login">LOGIN</a>
+		</div>
+	</div>
+	
+	<ul>
+		<li> <a href="/success">Home</a> </li>
+		<li> <a href="/movies">Film</a> </li>
+		<li> <a href="/artist">Attori</a> </li>
+	</ul>
+	</header>
+	
+	<div class="img-container">
+		<a href="/"><img src="/images/logo4.png" width="50%"/></a>
+	</div>
+	
+	<section class="centro-login-out">
+     <h1 style="text-shadow: none">Aggiungi un film</h1>
+     <form th:action="@{/admin/movie}" method="POST" th:object="${movie}" enctype="multipart/form-data"> 
+         <div th:if="${#fields.hasGlobalErrors()}">
+             <p th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p> 
+         </div>
+
+         <div>
+			 <div>Titolo:</div>
+             <span><input type="text" th:field="${movie.title}"/></span>
+             <span th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></span>
+         </div> 
+         
+         <p> 
+			  <div>Anno:</div>
+			  <span><input type="text" th:field="${movie.year}"/></span>
+              <span th:if="${#fields.hasErrors('year')}" th:errors="*{year}"></span>
+         </p> 
+         
+         <p> 
+			 <div>Immagini:</div>
+             <input type="file" name ="file" multiple></input>
+         </p>
+         
+         <p>
+             <span><button type="submit">Conferma</button></span>
+         </p>
+         
+     </form> 
+     </section>
+</body>
+
+</html>

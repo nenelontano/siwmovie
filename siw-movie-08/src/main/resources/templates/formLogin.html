@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>SiwMovie - Login</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="/css/stile.css" />
+</head>
+
+<body>
+<header id="header-nav">
+	<div class="login-out">
+		<div th:if="${#request.userPrincipal}" >
+			<span th:text="${#request.userPrincipal.principal.username}"></span>
+			<a href="/logout">LOGOUT            </a>
+		</div>
+		<div th:unless="${#request.userPrincipal}">
+			<a href="/login">LOGIN            </a>
+		</div>
+	</div>
+	
+	<ul>
+		<li> <a href="/success">Home</a> </li>
+		<li> <a href="/movies">Film</a> </li>
+		<li> <a href="/artist">Attori</a> </li>
+	</ul>
+</header>
+
+
+<section class="centro-login-out">
+	<h1 style="height: 20px; text-shadow: none">Login</h1>
+	<form th:action="@{/login}" method="POST">
+	    <div class="input">
+	        <div>Username:</div>
+	        <span><input name="username" type="text" required /></span>
+	    </div>
+	    <div class="input">
+	        <div>Password:</div>
+	        <span><input name="password" type="password" required /></span>
+	    </div>
+	    <div>
+	        <span th:if="${param.error != null}">Username o password errati</span>
+	    </div>
+	    <div>
+	        <span><button type="submit"style="width:100px;"> LOGIN </button></span>
+	    </div>
+	</form>
+	<p>
+		<p>Non sei ancora registrato?</p>
+	    <a th:href="@{/register}" th:text="REGISTRATI">Registrati</a>
+	</p>
+</section>
+
+
+</body>
+
+</html>

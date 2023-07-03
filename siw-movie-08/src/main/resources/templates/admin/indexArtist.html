@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Geestione Artisti</title>
+		<link rel="stylesheet" href="/css/stile.css" />
+	</head>
+
+    <body>
+	<header id="header-nav">
+		<div class="login-out">
+			<div th:if="${#request.userPrincipal}">
+				<span style="color:white" th:text="${#request.userPrincipal.principal.username}"></span>
+				<a href="/logout">LOGIN</a>
+			</div>
+			<div th:unless="${#request.userPrincipal}">
+				<a href="/login">LOGOUT</a>
+			</div>
+		</div>
+		
+		<ul>
+			<li> <a href="/success">Home</a> </li>
+			<li> <a href="/movies">Film</a> </li>
+			<li> <a href="/artist">Attori</a> </li>
+		</ul>
+	</header>
+	
+	<div class="img-container">
+		<a href="/"><img src="/images/logo4.png" width="50%"/></a>
+	</div>
+	
+	<section class="centro">
+		<p></p>
+		<div>
+	      <a href="/admin/formNewArtist"> Inserisci i dati di un artista<a/>
+	    </div>
+	    <p>
+			<a href="/artist">Artisti</a>
+		</p>
+	</section>
+	</body>
+</html>

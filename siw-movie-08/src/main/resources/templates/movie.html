@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Film</title>
+   <link rel="stylesheet" href="/css/stile.css" />
+</head>
+  
+<body>
+	<header>
+		<div th:if="${#request.userPrincipal}">
+			<span th:text="${#request.userPrincipal.principal.username}"></span>
+			<a href="/logout">Logout</a>
+		</div>
+		<div th:unless="${#request.userPrincipal}">
+			<a href="/login">Login</a>
+		</div>
+	</header>
+	
+	<div><a href="/"><img src="/images/logo-mio.png" width="50%"/></a></div>
+	<h1>Dettagli Film</h1>
+	<div th:if="${movie}">
+	    <h2 th:text="${movie.title}">Titolo Film</h2>
+	    <h3 th:text="'(' + ${movie.year} + ')'">2000</h3>
+	    <div th:each="img : ${movie.image}" class="w-64">
+			<div>
+				<img th:src="'data:image/jpeg;base64,'+${img.getData()}">
+			</div>
+		</div>
+		<label>Attori: </label>
+		<div th:if="${movie.getActors().isEmpty()}">Non ci sono attori nel film</div>
+		<ul>
+			<li th:each="artist : ${movie.getActors()}">
+				<span th:text = "${artist.name} + ' (' + ${artist.surname} + ')'">Attore </span>
+				<a th:href="@{'/artist' + '/' + ${artist.id}}"> Vedi </a>
+			</li>
+		</ul>
+		
+		<label>Recensioni:</label>
+		<div th:if="${movie.getRecensioni().isEmpty()}">Ancora non ci sono recensioni per questo film!</div>
+		<!--<div th:if="${!giaRecensito}">
+			<a th:href="@{'/formNewRecensione'+'/' + ${credentials.user.id} +'/'+ ${movie.id}}">Scrivi Recensione</a>
+		</div>-->
+		<a th:href="@{'/formNewRecensione'+'/' + ${credentials.user.id} +'/'+ ${movie.id}}">Scrivi Recensione</a>
+
+		<ul>
+			<li th:each="rec : ${movie.getRecensioni()}">
+				<span th:text="${rec.titolo}">Titolo</span>
+				<span th:text="${rec.valutazione}">Voto</span>
+				<span th:text="${rec.testo}">Testo</span>
+				<span th:text="${rec.autore.name}">Autore</span>
+				<span th:if="${credentials.isAdmin() || recensione.autore.id==credentials.user.id}">
+					<a th:href="@{'/deleteRecensione'+'/' + ${rec.id} + '/' + ${movie.id}}">Elimina Recensione</a>
+				</span>
+			</li>
+		</ul>
+    <div th:unless="${movie}">Non esiste</div>
+	</div>
+</body>
+
+</html>

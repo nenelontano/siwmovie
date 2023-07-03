@@ -1,0 +1,149 @@
+.img-container{
+	display:flex;
+	justify-content:center;
+	text-align: center;
+	margin-top: 50px;
+}
+
+
+body {
+	background: url('https://asset-a.grid.id/crop/0x0:0x0/x/photo/2023/03/27/hari-film-nasional-1jpg-20230327022817.jpg');
+	background-size: 100%;
+}
+
+body { 
+    font-family: "Geneva";
+    color:black;
+}
+
+a { 
+	text-decoration: none; 
+    color:rgb(0, 0, 0);
+}
+
+a:hover { 
+	text-decoration: underline; 
+	color: rgb(0, 0, 0)
+}
+
+label {
+	width: 8em;
+	display: inline-block;
+}
+
+h1{
+	font-family: Brush Script MT;
+	font-size: 50px;
+	height: 20px;
+	text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+#header-nav {
+	display:flex;
+    position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	background-color: rgb(72, 72, 72);
+	color: white;
+	height: 1.5em;
+ 	margin-bottom: 0.5em;
+  	padding: 10px;
+  	text-align: right; 
+  	justify-content: space-between;
+}
+
+.login-out{
+	justify-content: flex-end;
+	position: absolute;
+    top: 30%;
+    right: 0;
+	padding-right: 30px;
+	color:black;
+}
+
+
+
+header a:hover:not(.active) {
+    background-color: rgb(72, 72, 72);
+}
+
+header ul{
+	list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: rgb(72, 72, 72);
+}
+
+header li {
+    justify-content: flex-start;
+    float:left;
+}
+
+header li a {
+    display: block;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    width: 100px;;
+}
+
+header li a:hover:not(.active) {
+    background-color: #333;
+}
+
+
+.centro-login-out {
+	position:absolute;
+	top:60%;
+	left:50%;
+	width: 40%;
+	transform: translate(-50%,-50%);
+	display:flex;
+	justify-content:center;
+	text-align: center;
+	flex-direction: column;
+	background: linear-gradient(0deg, #ff4040 42%, rgba(255,0,0,1) 96%);
+	border: 2px solid black;
+	border-radius: 20px;
+	font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.centro-login-out form .input{
+	position:relative;
+	border-bottom: 2px solid #adadad;
+	margin: 30px 0;
+	width: 100%;
+	padding: 0 5px;
+	height: 40px;
+	font-size: 16px;
+	border:none;
+	background: none;
+	outline: none;
+}
+
+
+
+.centro {
+	position:absolute;
+	top:50%;
+	left:50%;
+	width: 40%;
+	transform: translate(-50%,-50%);
+	display:flex;
+	justify-content:center;
+	text-align: center;
+	color: white;
+	flex-direction: column;
+	background: rgb(72, 72, 72);
+	border: 2px solid rgb(72, 72, 72);
+	border-radius: 20px;
+	font-family: fantasy;
+	font-size: 25px;
+	margin-top: 70px;
+}
+
+.centro a {
+	color:white;
+}
