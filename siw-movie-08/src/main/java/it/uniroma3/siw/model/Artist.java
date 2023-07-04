@@ -21,6 +21,7 @@ public class Artist {
 	
 	@NotBlank
 	private String name;
+
 	@NotBlank
 	private String surname;
 	
