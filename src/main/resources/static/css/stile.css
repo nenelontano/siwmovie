@@ -147,3 +147,43 @@ header li a:hover:not(.active) {
 .centro a {
 	color:white;
 }
+
+.sinistra {
+	position: absolute;
+	top: 50%;
+	left: 20px; /* Aggiunto valore "20px" per posizionarlo a sinistra */
+	width: 40%;
+	transform: translateY(-50%);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	color: white;
+	flex-direction: column;
+	background: rgb(72, 72, 72);
+	border: 2px solid rgb(72, 72, 72);
+	border-radius: 20px;
+	font-family: fantasy;
+	font-size: 25px;
+	margin-top: 70px;
+}
+
+.destra {
+	position: absolute;
+	top: 50%;
+	right: 20px; /* Aggiunto valore "20px" per posizionarlo a destra */
+	width: 40%;
+	transform: translateY(-50%);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	color: white;
+	flex-direction: column;
+	background: rgb(72, 72, 72);
+	border: 2px solid rgb(72, 72, 72);
+	border-radius: 20px;
+	font-family: fantasy;
+	font-size: 25px;
+	margin-top: 70px;
+}

@@ -28,16 +28,12 @@
 	<a href="/"><img src="/images/logo4.png" width="50%"/></a>
 </div>
 
-<section class="centro">
+<section class="sinistra">
 	<h1>Dettagli Film</h1>
 	<div th:if="${movie}">
 	    <h2 th:text="${movie.title}">Titolo Film</h2>
 	    <h2 th:text="'(' + ${movie.year} + ')'">2000</h2>
-	    <div th:each="img : ${movie.image}" class="w-64">
-			<div>
-				<img th:src="'data:image/jpeg;base64,'+${img.getData()}">
-			</div>
-		</div>
+
 		<label>Attori: </label>
 		<div th:if="${movie.getActors().isEmpty()}">Non ci sono attori nel film</div>
 		<ul>
@@ -67,7 +63,14 @@
 		</ul>
     <div th:unless="${movie}">Non esiste</div>
 	</div>
+</section>
 
+<section class="destra">
+	<div th:each="img : ${movie.image}" class="w-64">
+		<div>
+			<img th:src="'data:image/jpeg;base64,'+${img.getData()}">
+		</div>
+	</div>
 </section>
 </body>
 
