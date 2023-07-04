@@ -7,17 +7,25 @@
 
 
 <body>
-<header>
-    <div th:if="${#request.userPrincipal}">
-        <span th:text="${#request.userPrincipal.principal.username}"></span>
-        <a href="/logout">Logout</a>
+<header id="header-nav">
+    <div class="login-out">
+        <div th:if="${#request.userPrincipal}">
+            <span th:text="${#request.userPrincipal.principal.username}" style="color:white"></span>
+            <a href="/logout">LOGOUT</a>
+        </div>
+        <div th:unless="${#request.userPrincipal}">
+            <a href="/login">LOGIN</a>
+        </div>
     </div>
-    <div th:unless="${#request.userPrincipal}">
-        <a href="/login">Login</a>
-    </div>
+
+    <ul>
+        <li> <a href="/success">Home</a> </li>
+        <li> <a href="/movies">Film</a> </li>
+        <li> <a href="/artist">Attori</a> </li>
+    </ul>
 </header>
 
-<div><a href="/"><img src="/images/logo-mio.png" width="50%"/></a></div>
+<section class="centro">
 <h1>Aggiungi una recensione</h1>
 <form th:action="@{'/addRecensione/'+ ${movie.id}+ '/' + ${credentials.user.id}} " method="POST"
       th:object="${recensione}">
@@ -26,31 +34,33 @@
         <p th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p>
     </div>
 
-    <fieldset style="width: 400px;">
-        <legend>NUOVA RECENSIONE</legend>
-        <div>
-            <label>Titolo</label>
-            <span><input type="text" th:field="${recensione.titolo}"/></span>
-            <span th:if="${#fields.hasErrors('titolo')}" th:errors="*{titolo}"></span>
-        </div>
+    <label>Titolo</label>
+    <div><input type="text" placeholder="titolo" required th:field="${recensione.titolo}"/></div>
+    <span th:if="${#fields.hasErrors('titolo')}" th:errors="*{titolo}"
+          th:style="'color:red'">
+    </span>
+    <p></p>
 
-        <div>
-            <label>Voto</label>
-            <span><input type="number" th:field="${recensione.valutazione}" min="1" max="5" step="1"></span>
-            <span th:if="${#fields.hasErrors('valutazione')}" th:errors="*{valutazione}"></span>
-        </div>
+    <div>
+        <label>Voto</label>
+        <div><input type="number" th:field="${recensione.valutazione}" min="1" max="5" step="1"></div>
+        <span th:if="${#fields.hasErrors('valutazione')}" th:errors="*{valutazione}" th:style="'color:red'"></span>
+    </div>
 
-        <div>
-            <label>Testo</label>
-            <textarea type="text" th:field="${recensione.testo}"/></textarea>
-        </div>
+    <p></p>
 
-        <div>
-            <span><button type="submit">Invia</button></span>
-        </div>
+    <div>
+        <label>Testo</label>
+        <div><textarea type="text" placeholder="inserisci un testo" required th:field="${recensione.testo}"/></textarea></div>
+    </div>
 
-    </fieldset>
+    <p>
+        <span><button type="submit">INVIA</button></span>
+    </p>
+
 </form>
+
+</section>
 </body>
 
 </html>

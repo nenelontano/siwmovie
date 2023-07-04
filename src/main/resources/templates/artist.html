@@ -6,27 +6,39 @@
 </head>
   
 <body>
-	 <header>
-		<div th:if="${#request.userPrincipal}">
-			<span th:text="${#request.userPrincipal.principal.username}"></span>
-			<a href="/logout">Logout</a>
-		</div>
-		<div th:unless="${#request.userPrincipal}">
-			<a href="/login">Login</a>
-		</div>
-	</header>
-	
-  <div><a href="/"><img src="/images/logo-mio.png" width="50%"/></a></div>
+<header id="header-nav">
+    <div class="login-out">
+        <div th:if="${#request.userPrincipal}">
+            <span th:text="${#request.userPrincipal.principal.username}" style="color:white"></span>
+            <a href="/logout">LOGOUT</a>
+        </div>
+        <div th:unless="${#request.userPrincipal}">
+            <a href="/login">LOGIN</a>
+        </div>
+    </div>
+
+    <ul>
+        <li> <a href="/success">Home</a> </li>
+        <li> <a href="/movies">Film</a> </li>
+        <li> <a href="/artist">Attori</a> </li>
+    </ul>
+</header>
+
+<div class="img-container">
+    <a href="/"><img src="/images/logo4.png" width="50%"/></a>
+</div>
+
+<section class="sinistra">
   <h1>Dettagli Artista</h1>
   <div th:if="${artist}">
       <div>
           <label>Nome: </label> <span th:text="${artist.name} + ' ' + ${artist.surname}">Paola Cortellesi</span>
       </div>
+      <p>
+          <label>Data di nascita: </label> <span th:text="'(' + ${artist.dateOfBirth} + ')'">20/20/2000</span>
+      </p>
       <div>
-          <label>Anno di nascita: </label> <span th:text="'(' + ${artist.dateOfBirth} + ')'">20/20/2000</span>
-      </div>
-      <div>
-          <label>Anno di morte: </label>
+          <label>Data di morte: </label>
           <span th:if="${artist.dateOfDeath}">
               <span th:text="'(' + ${artist.dateOfDeath} + ')'">20/20/2000</span>
           </span>
@@ -34,6 +46,15 @@
       </div>
   </div> 
   <div th:unless="${artist}">Non esiste</div>
+</section>
+
+<section class="destra">
+    <span th:if="${artist.image}">
+        <div> <img th:src="'data:image/jpeg;base64,'+${artist.getImage().getImgData()}">
+        </div>
+    </span>
+</section>
+
 </body>
 
 </html>

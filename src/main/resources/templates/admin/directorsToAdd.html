@@ -9,18 +9,32 @@
 
 
 <body>
-	<header>
-		<div th:if="${#request.userPrincipal}">
-			<span th:text="${#request.userPrincipal.principal.username}"></span>
-			<a href="/logout">Logout</a>
-		</div>
-		<div th:unless="${#request.userPrincipal}">
-			<a href="/login">Login</a>
-		</div>
-	</header>
-	
-     <div><a href="/"><img src="/images/logo-mio.png" width="50%"/></a></div>
+<header id="header-nav">
+    <div class="login-out">
+        <div th:if="${#request.userPrincipal}" >
+            <span th:text="${#request.userPrincipal.principal.username}" style="color:white";></span>
+            <a href="/logout">LOGOUT            </a>
+        </div>
+        <div th:unless="${#request.userPrincipal}">
+            <a href="/login">LOGIN            </a>
+        </div>
+    </div>
+
+    <ul>
+        <li> <a href="/success">Home</a> </li>
+        <li> <a href="/movies">Film</a> </li>
+        <li> <a href="/artist">Attori</a> </li>
+    </ul>
+</header>
+
+
+<div class="img-container">
+    <a href="/"><img src="/images/logo4.png" width="50%"/></a>
+</div>
+
+<section class="centro" style="margin-top: 100px;">
      <h1 th:text="'Regista per il film ' + ${movie.title}"></h1>
+    <p></p>
      <div th:if="${artists.isEmpty()}">Non ci sono artisti nel sistema</div>
      <ul>
          <li th:each="artist : ${artists}">
@@ -28,6 +42,7 @@
                  th:text="${artist.name} + ' (' + ${artist.surname} + ')'">Sergio Leone</a>
          </li>
      </ul>
+</section>
 </body>
 
 </html>
