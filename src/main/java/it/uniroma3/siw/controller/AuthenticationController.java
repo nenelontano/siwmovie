@@ -75,7 +75,7 @@ public class AuthenticationController {
             model.addAttribute("user", user);
             return "registrationSuccessful";
         }
-        return "registerUser";
+		return "registerUser";
 		
 	}
 	

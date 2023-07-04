@@ -3,35 +3,49 @@
 
 <head>
 	<title>SiwMovie - Registrazione conclusa</title>
+	<meta charset="utf-8">
 	<link rel="stylesheet" href="/css/stile.css" />
 </head>
 
 <body>
-	<header>
+<header id="header-nav">
+	<div class="login-out">
 		<div th:if="${#request.userPrincipal}">
-			<span th:text="${#request.userPrincipal.principal.username}"></span>
-			<a href="/logout">Logout</a>
+			<span th:text="${#request.userPrincipal.principal.username}" style="color: white"></span>
+			<a href="/logout">LOGOUT</a>
 		</div>
 		<div th:unless="${#request.userPrincipal}">
-			<a href="/login">Login</a>
+			<a href="/login">LOGIN</a>
 		</div>
-	</header>
+	</div>
 
-	<div>
-		<a href="/"><img src="/images/logo-mio.png" width="50%"/></a>
-	</div>
+	<ul>
+		<li> <a href="/success">Home</a> </li>
+		<li> <a href="/movies">Film</a> </li>
+		<li> <a href="/artist">Attori</a> </li>
+	</ul>
+</header>
+
+<div class="img-container">
+	<a href="/"><img src="/images/logo4.png" width="50%"/></a>
+</div>
+
+<section class="centro">
 	<h1>Congratulazioni ti sei registrato!</h1>
-	<div>
-		<span>Nome: </span>
+	<p></p>
+	<p>
+		<span style="color:red">Nome: </span>
 		<span th:text="${user.name}"></span>
-	</div>
+	</p>
 	<div>
-		<span>Cognome: </span>
+		<span style="color:red">Cognome: </span>
 		<span th:text="${user.surname}"></span>
 	</div>
-	<div>
-		<span>Email: </span>
+	<p>
+		<span style="color:red">Email: </span>
 		<span th:text="${user.email}"></span>
-	</div>
+	</p>
+</section>
+
 </body>
 </html>
