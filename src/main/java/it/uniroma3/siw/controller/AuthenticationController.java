@@ -39,7 +39,7 @@ public class AuthenticationController {
 	public String index(Model model) {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		if (authentication instanceof AnonymousAuthenticationToken) {
-			return "index.html";
+			return "index";
 		} else {
 			UserDetails userDetails = (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 			Credentials credentials = credentialsService.getCredentials(userDetails.getUsername());
@@ -47,7 +47,7 @@ public class AuthenticationController {
 				return "admin/indexAdmin.html";
 			}
 		}
-		return "index.html";
+		return "index";
 	}
 	
 	@GetMapping(value = "/success")
