@@ -31,30 +31,29 @@
 	<a href="/"><img src="/images/logo4.png" width="50%"/></a>
 </div>
 
-<section class="centro" style="margin-top: 200px;" >
-     <div><h1 th:text="'Attori del film ' + ${movie.title}"></h1></div>
+<section class="centro" style="margin-top: 250px;" >
+     <div><h1 th:text="'Attori del film ' + ${movie.title} + ':'"></h1></div>
 	<p></p>
   	  <p th:if="${artists.isEmpty()}">Non ci sono attori nel film</p>
- 	  <ul>
-      	  <li th:each="artist : ${artists}">
-		      <span th:text="${artist.name} + ' (' + ${artist.surname} + ')'">Attore</span>
-    	      <a th:href="@{'/admin/removeActorFromMovie' + '/' + ${artist.id} + '/' + ${movie.id}}">Cancella attore</a>
-  	      </li>
+ 	  <ul style="font-family: 'Century Gothic'; font-size: 18px;">
+      	  <div th:each="artist : ${artists}">
+		      <span th:text="${artist.name} + ' ' + ${artist.surname}">Attore</span>
+    	      <a th:href="@{'/admin/removeActorFromMovie' + '/' + ${artist.id} + '/' + ${movie.id}}" style="font-size:15px; color: red">Cancella attore</a>
+  	      </div>
   	  </ul>
   
-      <div>
-          <h2>Attori che puoi aggiungere al film</h2>
-          <div th:if="${notMovieActors.isEmpty()}">Non ci sono attori da aggiungere</div>
-          <ul>
-              <li th:each="artist : ${notMovieActors}">
-	              <span th:text="${artist.name} + ' (' + ${artist.surname} + ')'">Attore </span>
-                  <a th:href="@{'/admin/addActorToMovie' + '/' + ${artist.id} + '/' + ${movie.id}}"> Aggiungi attore</a>
-  	          </li>
-          </ul>
-      </div>
+
+	  <div>Attori che puoi aggiungere al film:</div>
+	  <span th:if="${notMovieActors.isEmpty()}">Non ci sono attori da aggiungere</span>
+	  <ul style="font-family: 'Century Gothic'; font-size: 18px;">
+		  <div th:each="artist : ${notMovieActors}">
+			  <span th:text="${artist.name} + ' ' + ${artist.surname}">Attore </span>
+			  <a th:href="@{'/admin/addActorToMovie' + '/' + ${artist.id} + '/' + ${movie.id}}" style="font-size:15px; color: red"> Aggiungi attore</a>
+		  </div>
+	  </ul>
   
       <div>
-	       <a th:href= "@{'/admin/formUpdateMovie' + '/' + ${movie.id}}"><button type="button">Fine</button></a>
+	       <a th:href= "@{'/admin/formUpdateMovie' + '/' + ${movie.id}}"><button type="button">FINE</button></a>
       </div>
 </section>
 </body>
