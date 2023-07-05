@@ -54,6 +54,13 @@
 			<div><a th:href = "@{'/admin/updateActorsOnMovie' + '/' + ${movie.id}}" style="font-size:15px; color: red"> Modifica attori</a></div>
 
 			<div th:unless="${movie}">Non esiste</div>
+
+			<form method="POST" th:action="@{'/admin/updateMoviePicture/'+${movie.id}}" enctype="multipart/form-data">
+				<label>Aggiungi Immagini</label>
+				<input type="file" name="file" multiple>
+				<button type="submit">Conferma</button>
+			</form>
+
 			</section>
 		</p>
 	</section>

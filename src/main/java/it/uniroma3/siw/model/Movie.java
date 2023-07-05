@@ -1,16 +1,12 @@
 package it.uniroma3.siw.model;
 
+import org.hibernate.annotations.Type;
+
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
@@ -32,7 +28,7 @@ public class Movie {
 	private Integer year;
     
     @OneToMany
-	private Set<Image> image;
+	private Set<Image> images;
 	
 	@ManyToOne
 	private Artist director;
@@ -66,12 +62,12 @@ public class Movie {
 		this.year = year;
 	}
 
-	public Set<Image> getImage() {
-		return image;
+	public Set<Image> getImages() {
+		return images;
 	}
 
-	public void setImage(Set<Image> image) {
-		this.image = image;
+	public void setImages(Set<Image> image) {
+		this.images = image;
 	}
 
 	public Artist getDirector() {

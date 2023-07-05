@@ -94,18 +94,30 @@ public class MovieService {
 	
 	@Transactional
 	public void newMovie(Movie movie, @RequestParam("file") MultipartFile[] file, Model model) throws IOException {
-		movie.setImage(new HashSet<Image>());
-		/*for (MultipartFile f : file) {
+		movie.setImages(new HashSet<Image>());
+		for (MultipartFile f : file) {
 			System.out.println(f.toString());
-		}*/
+		}
 		for (MultipartFile f : file) {
 			Image image = new Image();
 			image.setName(f.getResource().getFilename());
 			image.setData(f.getBytes());
 			this.imageRepository.save(image);
-			movie.getImage().add(image);
+			movie.getImages().add(image);
 		}
 		this.movieRepository.save(movie);
 	}
 
+	@Transactional
+	public void updateMoviePicture(Long id, MultipartFile[] file) throws IOException {
+		Movie movie = this.findMovieById(id);
+		for (MultipartFile f : file) {
+			Image img = new Image();
+			img.setName(f.getResource().getFilename());
+			img.setData(f.getBytes());
+			this.imageRepository.save(img);
+			movie.getImages().add(img);
+		}
+		this.movieRepository.save(movie);
+	}
 }

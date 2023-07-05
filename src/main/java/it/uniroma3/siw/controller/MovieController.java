@@ -143,6 +143,18 @@ public class MovieController {
 		}
 		return "admin/formUpdateMovie.html";
 	}
+
+	@PostMapping (value="/admin/updateMoviePicture/{id}")
+	public String updateMoviePicture(@PathVariable("id") Long id,@RequestParam("file") MultipartFile[] file,  Model model) throws IOException {
+		Movie movie = movieService.findMovieById(id);
+		if(movie!=null) {
+			movieService.updateMoviePicture(id, file);
+			return "redirect:/movies/" + id;
+		} else {
+			return "movieError.html";
+		}
+
+	}
 	
 	//28/03
 	@GetMapping(value="/admin/addDirectorToMovie/{id}")
