@@ -6,23 +6,37 @@
 </head>
 	
 <body>
-	<header>
+<header id="header-nav">
+	<div class="login-out">
 		<div th:if="${#request.userPrincipal}">
-			<span th:text="${#request.userPrincipal.principal.username}"></span>
-			<a href="/logout">Logout</a>
+			<span th:text="${#request.userPrincipal.principal.username}"style="color: white"></span>
+			<a href="/logout">LOGOUT</a>
 		</div>
 		<div th:unless="${#request.userPrincipal}">
-			<a href="/login">Login</a>
+			<a href="/login">LOGIN</a>
 		</div>
-	</header>
-	
-	<div><a href="/"><img src="/images/logo-mio.png" width="50%"/></a></div>
+	</div>
+
+	<ul>
+		<li> <a href="/success">Home</a> </li>
+		<li> <a href="/movies">Film</a> </li>
+		<li> <a href="/artist">Attori</a> </li>
+	</ul>
+</header>
+
+<div class="img-container">
+	<a href="/"><img src="/images/logo4.png" width="50%"/></a>
+</div>
+
+<section class="centro">
 	<h1>Cerca film per anno</h1>
 	<form th:action="@{/searchMovies}" method="post">
-		<div>Anno: <input type="text" th:value="${year}" name="year" />
-		</div>
-		<div><input type="submit" /></div>
+		<div>Anno: <input type="text" th:value="${year}" name="year"></div>
+		<p>
+			<span><button type="submit" class="button">CERCA</button></span>
+		</p>
 	</form>
+</section>
 </body>
 		
 </html>

@@ -7,25 +7,38 @@
 </head>
 
 <body>
-	<header>
+<header id="header-nav">
+	<div class="login-out">
 		<div th:if="${#request.userPrincipal}">
-			<span th:text="${#request.userPrincipal.principal.username}"></span>
-			<a href="/logout">Logout</a>
+			<span th:text="${#request.userPrincipal.principal.username}"style="color: white"></span>
+			<a href="/logout">LOGOUT</a>
 		</div>
 		<div th:unless="${#request.userPrincipal}">
-			<a href="/login">Login</a>
+			<a href="/login">LOGIN</a>
 		</div>
-	</header>
-	
-	<div><a href="/"><img src="/images/logo-mio.png" width="50%"/></a></div>
-	<h1>Film con l'anno richiesto:</h1>
-	<div th:if="${movies.isEmpty()}">Non ci sono film che soddisfano i requisiti</div>
-	<ul th:if="${!movies.isEmpty()}">
-		<li th:each="movie : ${movies}">
-			<a href="movie.html" th:href="@{'/movie' + '/' + ${movie.id}}"
-				th:text="${movie.title} + ' (' + ${movie.year}+')'">Up! (2000)</a>
-		</li>
+	</div>
+
+	<ul>
+		<li> <a href="/success">Home</a> </li>
+		<li> <a href="/movies">Film</a> </li>
+		<li> <a href="/artist">Attori</a> </li>
 	</ul>
+</header>
+
+<div class="img-container">
+	<a href="/"><img src="/images/logo4.png" width="50%"/></a>
+</div>
+
+<section class="centro">
+	<h1>Film con l'anno richiesto:</h1>
+	<p th:if="${movies.isEmpty()}">Non ci sono film che soddisfano i requisiti</p>
+	<ul th:if="${!movies.isEmpty()}">
+		<div th:each="movie : ${movies}">
+			<a href="movie.html" th:href="@{'/movies' + '/' + ${movie.id}}"
+				th:text="${movie.title} + ' (' + ${movie.year}+')'">Up! (2000)</a>
+		</div>
+	</ul>
+</section>
 </body>
 
 </html>

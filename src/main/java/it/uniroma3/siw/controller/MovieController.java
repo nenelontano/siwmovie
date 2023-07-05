@@ -118,8 +118,9 @@ public class MovieController {
 	}
 	
 	/*Risponde con una pagina che mostra la form per cercare un film per anno*/
-	@GetMapping("/formSearchMovies") 
+	@GetMapping("/formSearchMovies")
 	public String formSearchMovies() { 
+
 		return "formSearchMovies.html";
 	}
 	

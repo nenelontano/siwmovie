@@ -68,6 +68,7 @@ public class ArtistController {
 	
 	@GetMapping("/formSearchArtists") 
 	public String formSearchArtists() { 
+
 		return "formSearchArtists.html";
 	}
 	
