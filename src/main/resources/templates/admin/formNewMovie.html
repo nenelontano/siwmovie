@@ -37,24 +37,24 @@
          </div>
 
          <div>
-			 <div>Titolo:</div>
-             <span><input type="text" th:field="${movie.title}"/></span>
+
+			 <label>Titolo:</label><span><input type="text" th:field="${movie.title}"/></span>
              <span th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></span>
          </div> 
          
-         <p> 
-			  <div>Anno:</div>
-			  <span><input type="text" th:field="${movie.year}"/></span>
+         <p>
+
+			 <label>Anno:</label><span><input type="text" th:field="${movie.year}"/></span>
               <span th:if="${#fields.hasErrors('year')}" th:errors="*{year}"></span>
          </p> 
          
-         <p> 
+         <p>
 			 <div>Immagini:</div>
              <input type="file" name ="file" multiple></input>
          </p>
          
          <p>
-             <span><button type="submit">Conferma</button></span>
+             <span><button type="submit" class="button">Conferma</button></span>
          </p>
          
      </form> 

@@ -38,6 +38,26 @@ h1{
 	text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
 
+.button {
+	top: 50%;
+	background-color: black;
+	color: white;
+	border: none;
+	border-radius: 10px;
+	padding: 15px;
+	min-height: 30px;
+	min-width: 120px;
+}
+
+.button:hover {
+	background-color: #1A1A1A;
+	transition: 0.7s;
+}
+
+.button:active {
+	background-color: #1A1A1A;
+}
+
 #header-nav {
 	display:flex;
     position: fixed;
