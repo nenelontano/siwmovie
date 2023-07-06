@@ -67,7 +67,7 @@
 
 <section class="destra">
 	<div th:each="img : ${movie.images}">
-		<img th:src="'data:image/jpeg;base64,'+${img.getData()}">
+		<img th:src="'data:image/jpeg;base64,'+${img.getImgData()}">
 	</div>
 </section>
 </body>
