@@ -1,0 +1,53 @@
+body {
+    background: url('https://asset-a.grid.id/crop/0x0:0x0/x/photo/2023/03/27/hari-film-nasional-1jpg-20230327022817.jpg');
+    background-size: 100%;
+}
+
+
+.container {
+    position:absolute;
+    top:50%;
+    left:50%;
+    width: fit-content;
+    height: fit-content;
+    transform: translate(-50%,-50%);
+    display:flex;
+    justify-content:center;
+    text-align: center;
+    color: white;
+    flex-direction: column;
+    background: rgb(72, 72, 72);
+    border: 2px solid rgb(72, 72, 72);
+    border-radius: 20px;
+    font-family: 'Roboto Condensed', cursive;
+    font-size: 16px;
+    margin-top: 200px;
+}
+
+a:hover:not(.active) {
+    color:red;
+}
+
+.container h1{
+    color:red;
+    font-family: Brush Script MT;
+    font-size: 40px;
+}
+
+.container h2{
+    font-size: 30px;
+}
+
+.container a{
+    color:white;
+}
+.container label{
+    font-size: 20px;
+}
+
+
+.navbar {
+    background-color: rgb(72, 72, 72);
+    margin-bottom: 100px;
+    font-family: 'Roboto Condensed', cursive;
+}
