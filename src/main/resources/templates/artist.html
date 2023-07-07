@@ -50,7 +50,7 @@
 
 <section class="destra">
     <span th:if="${artist.image}">
-        <div> <img th:src="'data:image/jpeg;base64,'+${artist.getImage().getImgData()}">
+        <div> <img th:src="'data:image/jpeg;base64,'+${artist.getImage().getImgData()}" class="img-fluid">
         </div>
     </span>
 </section>

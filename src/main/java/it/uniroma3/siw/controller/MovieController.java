@@ -153,7 +153,6 @@ public class MovieController {
 		} else {
 			return "movieError.html";
 		}
-
 	}
 	
 	//28/03
