@@ -1,44 +1,57 @@
 <!DOCTYPE html>
 <html>
-	
-	
 <head>
-     <title>Aggiorna Attori</title>
-     <link rel="stylesheet" href="/css/stile.css" />
+	<title>Film</title>
+	<!-- Bootstrap CSS Files -->
+	<link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/css/stile2.css" />
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
 
-
 <body>
-<header id="header-nav">
-	<div class="login-out">
-		<div th:if="${#request.userPrincipal}">
-			<span th:text="${#request.userPrincipal.principal.username}" style="color:white"></span>
-			<a href="/logout">LOGOUT</a>
-		</div>
-		<div th:unless="${#request.userPrincipal}">
-			<a href="/login">LOGIN</a>
-		</div>
+<nav class="navbar navbar-expand-lg fixed-top">
+	<a class="navbar-brand" href="/">
+		<img src="/images/logo4.png" width="80" height="50" alt="Logo">
+	</a>
+	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+			aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+	<div class="collapse navbar-collapse justify-content-between">
+		<ul class="navbar-nav">
+			<li class="nav-item">
+				<a class="nav-link" href="/success">Home</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="/movies">Film</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="/artist">Attori</a>
+			</li>
+		</ul>
+		<ul class="navbar-nav">
+			<li class="nav-item">
+				<a class="nav-link" th:if="${#request.userPrincipal}" th:text="${#request.userPrincipal.principal.username}"
+				   style="color:white"></a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" th:if="${#request.userPrincipal}" href="/logout">LOGOUT</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" th:unless="${#request.userPrincipal}" href="/login">LOGIN</a>
+			</li>
+		</ul>
 	</div>
+</nav>
 
-	<ul>
-		<li> <a href="/success">Home</a> </li>
-		<li> <a href="/movies">Film</a> </li>
-		<li> <a href="/artist">Attori</a> </li>
-	</ul>
-</header>
-
-<div class="img-container">
-	<a href="/"><img src="/images/logo4.png" width="50%"/></a>
-</div>
-
-<section class="centro" style="margin-top: 250px;" >
+<section class="container d-flex justify-content-center align-items-center" style="margin-top: 250px;" >
      <div><h1 th:text="'Attori del film ' + ${movie.title} + ':'"></h1></div>
 	<p></p>
   	  <p th:if="${artists.isEmpty()}">Non ci sono attori nel film</p>
  	  <ul style="font-family: 'Century Gothic'; font-size: 18px;">
-      	  <div th:each="artist : ${artists}">
-		      <span th:text="${artist.name} + ' ' + ${artist.surname}">Attore</span>
-    	      <a th:href="@{'/admin/removeActorFromMovie' + '/' + ${artist.id} + '/' + ${movie.id}}" style="font-size:15px; color: red">Cancella attore</a>
+      	  <div th:each="artist : ${artists}" >
+		      <span th:text="${artist.name} + ' ' + ${artist.surname}" >Attore</span>
+    	      <a th:href="@{'/admin/removeActorFromMovie' + '/' + ${artist.id} + '/' + ${movie.id}}">Cancella attore</a>
   	      </div>
   	  </ul>
   
@@ -48,7 +61,7 @@
 	  <ul style="font-family: 'Century Gothic'; font-size: 18px;">
 		  <div th:each="artist : ${notMovieActors}">
 			  <span th:text="${artist.name} + ' ' + ${artist.surname}">Attore </span>
-			  <a th:href="@{'/admin/addActorToMovie' + '/' + ${artist.id} + '/' + ${movie.id}}" style="font-size:15px; color: red"> Aggiungi attore</a>
+			  <a th:href="@{'/admin/addActorToMovie' + '/' + ${artist.id} + '/' + ${movie.id}}" style=" color: red"> Aggiungi attore</a>
 		  </div>
 	  </ul>
   

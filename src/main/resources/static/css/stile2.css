@@ -21,7 +21,7 @@ body {
     border-radius: 20px;
     font-family: 'Roboto Condensed', cursive;
     font-size: 16px;
-    margin-top: 200px;
+    margin-top: 50px;
 }
 
 a:hover:not(.active) {
@@ -48,6 +48,6 @@ a:hover:not(.active) {
 
 .navbar {
     background-color: rgb(72, 72, 72);
-    margin-bottom: 100px;
+    /*margin-bottom: 100px;*/
     font-family: 'Roboto Condensed', cursive;
 }
