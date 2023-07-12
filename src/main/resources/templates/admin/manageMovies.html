@@ -49,7 +49,7 @@
 	<div th:if="${movies.isEmpty()}">Non ci sono film nel sistema</div>
 	<div th:each="movie : ${movies}" style="font-family: 'Century Gothic'; font-size: 20px;">
 		<span th:text="${movie.title} + ' (' + ${movie.year} + ')'">Film (Anno)</span>
-		<a th:href="@{'/admin/formUpdateMovie' + '/' + ${movie.id}}" style="color: red;">Aggiorna</a>
+		<a th:href="@{'/admin/formUpdateMovie' + '/' + ${movie.id}}" style="font-size:15px; color: red">Aggiorna</a>
 	</div>
 	<p></p>
 </section>

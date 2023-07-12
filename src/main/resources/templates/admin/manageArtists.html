@@ -49,7 +49,7 @@
     <div th:if="${artists.isEmpty()}">Non ci sono artisti nel sistema</div>
     <div th:each="artist : ${artists}" style="font-family: 'Century Gothic'; font-size: 20px;">
         <span th:text="${artist.name} + ' ' + ${artist.surname}">Nome Cognome</span>
-        <a th:href="@{'/admin/formUpdateArtist' + '/' + ${artist.id}}" style="color: red;">Aggiorna</a>
+        <a th:href="@{'/admin/formUpdateArtist' + '/' + ${artist.id}}" style="font-size:15px; color: red">Aggiorna</a>
     </div>
     <p></p>
 </section>

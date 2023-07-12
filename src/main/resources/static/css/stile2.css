@@ -26,6 +26,7 @@ body {
 
 a:hover:not(.active) {
     color:red;
+    text-decoration: underline;
 }
 
 .container h1{
@@ -40,6 +41,7 @@ a:hover:not(.active) {
 
 .container a{
     color:white;
+    text-decoration: none;
 }
 .container label{
     font-size: 20px;
