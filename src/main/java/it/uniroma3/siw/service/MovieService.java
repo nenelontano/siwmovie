@@ -120,4 +120,15 @@ public class MovieService {
 		}
 		this.movieRepository.save(movie);
 	}
+
+	@Transactional
+	public Movie updateMovie(Long id, Movie newMovie)  {
+		Movie oldMovie = this.findMovieById(id);
+		if (oldMovie != null) {
+			oldMovie.setTitle(newMovie.getTitle());
+			oldMovie.setYear(newMovie.getYear());
+			this.saveMovie(oldMovie);
+		}
+		return oldMovie;
+	}
 }

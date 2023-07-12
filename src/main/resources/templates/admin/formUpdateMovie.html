@@ -44,15 +44,24 @@
 	</div>
 </nav>
 
-<section class="container d-flex justify-content-center align-items-center">
+<section class="container d-flex justify-content-center align-items-center" style="margin-top: 100px;">
 	<h1>Aggiorna film:</h1>
-		<p th:if="${movie}" style="font-size: 20px;">
+		<p th:if="${movie}" style="font-size: 30px;">
 			<span th:text="${movie.title}" >Titolo film</span>
 			<span th:text="'(' + ${movie.year} + ')'">Anno</span>
 
-			<section style="font-family: 'Century Gothic'; font-size: 18px;">
-				<span>Regista: </span>
-				<div th:if="${movie.director}">
+			<form method="POST" th:action="@{'/admin/updateMovie/'+${movie.id}}">
+				<section style="font-family: 'Century Gothic'; font-size: 18px;">
+
+					<div> Modifica titolo</div>
+					<input type="text" th:field="${movie.title}">
+					<div class="pt-3"> Modifica anno</div>
+					<input type="text" th:field="${movie.year}">
+				</section>
+			</form>
+
+			<div class="pt-3">Regista: </div>
+			<div th:if="${movie.director}">
 				<span th:text="${movie.director.name} + ' ' + ${movie.director.surname}">Paola Cortellesi</span>
 				<a th:href="@{'/admin/addDirectorToMovie/' + ${movie.id}}" style="font-size:15px; color: red">Modifica regista</a></span>
 			</div>
@@ -68,16 +77,17 @@
 			</div>
 			<div><a th:href = "@{'/admin/updateActorsOnMovie' + '/' + ${movie.id}}" style="font-size:15px; color: red"> Modifica attori</a></div>
 
-			<div th:unless="${movie}">Non esiste</div>
-			<p></p>
-			<form method="POST" th:action="@{'/admin/updateMoviePicture/'+${movie.id}}" enctype="multipart/form-data">
-				<div><span>Aggiungi Immagini</span></div>
-				<input type="file" name="file" multiple>
-				<p class="pt-3"><button type="submit">Conferma</button></p>
-			</form>
+		<p></p>
 
-			</section>
-		</p>
+		<form method="POST" th:action="@{'/admin/updateMoviePicture/'+${movie.id}}" enctype="multipart/form-data">
+						<div><span>Aggiungi Immagini</span></div>
+						<input type="file" name="file" multiple>
+						<p class="pt-3"><button type="submit">Conferma</button></p>
+		</form>
+
+	</p>
+
+	<div th:unless="${movie}">Non esiste</div>
 	</section>
 
 </body>

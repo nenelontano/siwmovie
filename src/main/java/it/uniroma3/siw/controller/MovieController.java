@@ -67,10 +67,10 @@ public class MovieController {
 	@PostMapping("/admin/movie") 
 	public String newMovie(@Valid @ModelAttribute("movie") Movie movie, BindingResult bindingResult, Model model, @RequestParam("file") MultipartFile[] file) throws IOException { 
 		this.movieValidator.validate(movie, bindingResult);
-		if (!bindingResult.hasErrors()) { 
-			this.movieService.newMovie(movie, file, model);
+		if (!bindingResult.hasErrors()) {
+			this.movieService.newMovie(movie, file, model);   //se non inserisci la foto da errore
 			model.addAttribute("movie", movie); 
-			return "movie.html";
+			return "redirect:/movies/" + movie.getId();
 		} else { 
 			return "admin/formNewMovie.html";
 		}
@@ -142,6 +142,15 @@ public class MovieController {
 			return "movieError.html";
 		}
 		return "admin/formUpdateMovie.html";
+	}
+
+	@PostMapping(value="/admin/updateMovie/{id}")
+	public String updateMovie(@PathVariable("id") Long id, @Valid @ModelAttribute("movie") Movie movie, BindingResult bindingResult, Model model) {
+		if(!bindingResult.hasErrors()) {
+			this.movieService.updateMovie(id, movie);
+			return "redirect:/movies/" + id;
+		}
+		return "movieError";
 	}
 
 	@PostMapping (value="/admin/updateMoviePicture/{id}")
