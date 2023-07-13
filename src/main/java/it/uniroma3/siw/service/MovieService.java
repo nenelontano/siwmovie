@@ -56,6 +56,7 @@ public class MovieService {
 		Artist director = this.artistRepository.findById(artistId).orElse(null);
 		if(movie!=null && director!= null) {
 			movie.setDirector(director);
+			director.getDirectedMovies().add(movie);
 			this.saveMovie(movie);
 			res=movie;
 		}

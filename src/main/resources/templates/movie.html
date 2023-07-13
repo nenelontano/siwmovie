@@ -45,12 +45,13 @@
 	</nav>
 
 
-<div class="container justify-content-center align-items-center" style="margin-top: 250px;">
+<div class="container justify-content-center align-items-center" style="margin-top: 300px;">
 	<section class="col-lg-9">
 		<h1>Dettagli Film</h1>
 		<div th:if="${movie}">
 			<h2 th:text="${movie.title}">Titolo Film</h2>
 			<h2 th:text="'(' + ${movie.year} + ')'">2000</h2>
+			<h3 th:if="${movie.director}" th:text="${movie.director.name} + ${movie.director.surname}">Titolo Film</h3>
 
 			<label style="color:rgba(0,0,0,0.51)">Attori: </label>
 			<div th:if="${movie.getActors().isEmpty()}">Non ci sono attori nel film</div>

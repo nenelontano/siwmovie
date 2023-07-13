@@ -145,7 +145,7 @@ public class MovieController {
 	}
 
 	@PostMapping(value="/admin/updateMovie/{id}")
-	public String updateMovie(@PathVariable("id") Long id, @Valid @ModelAttribute("movie") Movie movie, BindingResult bindingResult, Model model) {
+	public String updateMovie(@PathVariable("id") Long id,@Valid  @ModelAttribute("movie") Movie movie, BindingResult bindingResult, Model model) {
 		if(!bindingResult.hasErrors()) {
 			this.movieService.updateMovie(id, movie);
 			return "redirect:/movies/" + id;
